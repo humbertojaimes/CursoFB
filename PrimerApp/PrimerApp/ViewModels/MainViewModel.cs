@@ -1,5 +1,7 @@
 ﻿using System;
 using PrimerApp.BaseClasses;
+using PrimerApp.Interfaces;
+using Xamarin.Forms;
 
 namespace PrimerApp.ViewModels
 {
@@ -9,7 +11,10 @@ namespace PrimerApp.ViewModels
         {
         }
 
-
+        public Command LoginCommand => new Command(() =>
+        {
+            DependencyService.Get<IFacebookLogin>().Login();        
+        });
 
     }
 }
