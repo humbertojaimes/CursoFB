@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+  x:Class="PrimerApp.Views.MainPage"
+  xmlns:vm="clr-namespace:PrimerApp.ViewModels">
+    <ContentPage.BindingContext>
+        <vm:MainViewModel/>
+    </ContentPage.BindingContext>
+    <StackLayout>
+        <Grid BackgroundColor="#EC0A0A" 
+              HeightRequest="120"
+              HorizontalOptions="Center"
+              VerticalOptions="Center"
+              >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="120"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="35"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Image 
+                Grid.Column="0"
+                Grid.RowSpan="2"
+                HeightRequest="100"
+                WidthRequest="100"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+            />
+            
+            <Label 
+                Grid.Row="0"
+                Grid.Column="1"
+                TextColor="White"
+                FontSize="Large"
+            />
+            
+            <StackLayout
+                Grid.Row="1"
+                Grid.Column="1"
+                Orientation="Horizontal">
+                <Button
+                  BackgroundColor="Black"
+                  TextColor="White"
+                  Text="Iniciar"
+                />
+                <Button
+                  BackgroundColor="Black"
+                  TextColor="White"
+                  Text="Cargar"
+                />
+            </StackLayout>
+            
+        </Grid>
+    </StackLayout>
+</ContentPage>
