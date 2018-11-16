@@ -73,6 +73,9 @@
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Implementations\FacebookLogin.cs" />
+    <Compile Include="Callbacks\FacebookCallback.cs" />
+    <Compile Include="Callbacks\GraphCallback.cs" />
+    <Compile Include="Implementations\FacebookClient.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -105,6 +108,7 @@
     <Folder Include="Resources\drawable-xxhdpi\" />
     <Folder Include="Resources\drawable-xxxhdpi\" />
     <Folder Include="Implementations\" />
+    <Folder Include="Callbacks\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PrimerApp\PrimerApp.csproj">

@@ -38,6 +38,7 @@
                 Grid.Column="1"
                 TextColor="White"
                 FontSize="Large"
+                Text="{Binding FacebookAccount.Name}"
             />
             
             <StackLayout
@@ -54,6 +55,7 @@
                   BackgroundColor="Black"
                   TextColor="White"
                   Text="Cargar"
+                   Command="{Binding LoadCommand}"
                 />
             </StackLayout>
         </Grid>
