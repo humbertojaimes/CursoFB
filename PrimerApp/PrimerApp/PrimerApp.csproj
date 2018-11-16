@@ -20,6 +20,8 @@
     <Folder Include="BaseClasses\" />
     <Folder Include="Enums\" />
     <Folder Include="Interfaces\" />
+    <Folder Include="Helpers\" />
+    <Folder Include="Converters\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="MainPage.xaml.cs" />

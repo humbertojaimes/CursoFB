@@ -16,14 +16,37 @@ namespace PrimerApp.Droid.Implementations
         TaskCompletionSource<GraphResponse> taskCompletion
         = new TaskCompletionSource<GraphResponse>();
 
-        public Task<FeedResponse> GetFeed()
+        public async Task<FeedResponse> GetFeed()
         {
-            throw new NotImplementedException();
+            taskCompletion = new TaskCompletionSource<GraphResponse>();
+            FeedResponse feedResponse = null;
+            GraphCallback graphCallback = new GraphCallback();
+            graphCallback.RequestCompleted += GraphCallback_RequestCompleted;
+            var graphRequest = new GraphRequest(AccessToken.CurrentAccessToken, $"/me/feed", null, HttpMethod.Get, graphCallback);
+            graphRequest.ExecuteAsync();
+            var graphResponse = await taskCompletion.Task;
+            graphCallback.RequestCompleted -= GraphCallback_RequestCompleted;
+            feedResponse = Newtonsoft.Json.JsonConvert.DeserializeObject<FeedResponse>(graphResponse.RawResponse);
+
+
+            return feedResponse;
         }
 
-        public Task<Uri> GetPicture(string id)
+        public async Task<Uri> GetPicture(string id)
         {
-            throw new NotImplementedException();
+            taskCompletion = new TaskCompletionSource<GraphResponse>();
+            Uri uri = null;
+            GraphCallback graphCallback = new GraphCallback();
+            graphCallback.RequestCompleted += GraphCallback_RequestCompleted;
+            var graphRequest = new GraphRequest(AccessToken.CurrentAccessToken, $"/{id}?fields=picture.type(large)", null, HttpMethod.Get, graphCallback);
+            graphRequest.ExecuteAsync();
+            var graphResponse = await taskCompletion.Task;
+            graphCallback.RequestCompleted -= GraphCallback_RequestCompleted;
+
+            uri = new Uri(Newtonsoft.Json.JsonConvert.DeserializeObject<PictureResponse>(graphResponse.RawResponse).picture.data.url);
+
+
+            return uri;
         }
 
         public async Task<ProfileResponse> GetProfile()
